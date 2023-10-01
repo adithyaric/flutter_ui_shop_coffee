@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_shop_coffee/pages/home_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +10,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Homepage(),
+      theme:
+          ThemeData(brightness: Brightness.dark, primarySwatch: Colors.orange),
     );
   }
 }

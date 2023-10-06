@@ -32,6 +32,10 @@ class _HomepageState extends State<Homepage> {
       "Tea",
       false,
     ],
+    [
+      "Boba",
+      false,
+    ],
   ];
   void coffeeTypeSelected(int index) {
     setState(() {
@@ -109,7 +113,21 @@ class _HomepageState extends State<Homepage> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                CoffeTile(),
+                CoffeTile(
+                  coffeeImagePath: 'lib/images/lattee.jpg',
+                  coffeeName: 'Latte',
+                  coffeePrice: '5',
+                ),
+                CoffeTile(
+                  coffeeImagePath: 'lib/images/cappuchino.jpg',
+                  coffeeName: 'Cappuchino',
+                  coffeePrice: '7',
+                ),
+                CoffeTile(
+                  coffeeImagePath: 'lib/images/milk.jpg',
+                  coffeeName: 'Milk',
+                  coffeePrice: '3',
+                ),
               ],
             ),
           )

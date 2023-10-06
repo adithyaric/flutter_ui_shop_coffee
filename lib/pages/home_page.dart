@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_shop_coffee/util/coffee_tile.dart';
+import 'package:ui_shop_coffee/util/coffee_type.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -10,6 +11,37 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  final List coffeeType = [
+    [
+      "Cappucino",
+      true,
+    ],
+    [
+      "Expresso",
+      false,
+    ],
+    [
+      "Latte",
+      false,
+    ],
+    [
+      "Black",
+      false,
+    ],
+    [
+      "Tea",
+      false,
+    ],
+  ];
+  void coffeeTypeSelected(int index) {
+    setState(() {
+      for (int i = 0; i < coffeeType.length; i++) {
+        coffeeType[i][1] = false;
+      }
+      coffeeType[index][1] = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,14 +90,18 @@ class _HomepageState extends State<Homepage> {
           SizedBox(height: 25),
           Container(
             height: 50,
-            child: ListView(
+            child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              children: [
-                Text('a'),
-                Text('b'),
-                Text('c'),
-                Text('d'),
-              ],
+              itemCount: coffeeType.length,
+              itemBuilder: (context, index) {
+                return CoffeeType(
+                  coffeeType: coffeeType[index][0],
+                  isSelected: coffeeType[index][1],
+                  onTap: () {
+                    coffeeTypeSelected(index);
+                  },
+                );
+              },
             ),
           ),
           // TODO Error Bottom Overflow : resizeToAvoidBottomInset: false

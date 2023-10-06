@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ui_shop_coffee/util/coffee_tile.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -12,6 +13,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
         elevation: 0,
@@ -54,6 +56,27 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
           SizedBox(height: 25),
+          Container(
+            height: 50,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                Text('a'),
+                Text('b'),
+                Text('c'),
+                Text('d'),
+              ],
+            ),
+          ),
+          // TODO Error Bottom Overflow : resizeToAvoidBottomInset: false
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                CoffeTile(),
+              ],
+            ),
+          )
         ],
       ),
     );
